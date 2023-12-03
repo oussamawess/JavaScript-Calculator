@@ -81,7 +81,7 @@ class App extends React.Component {
   handleOperators(e) {
     
     let lastChar = this.state.currentFormula[this.state.currentFormula.length-1];
-    let myRegex = /[+\-*\/]/;
+    let myRegex = /[+\-*]/;
     
     //The user presses one of the operators for the first time
     if (!myRegex.test(lastChar)) {
@@ -94,13 +94,13 @@ class App extends React.Component {
     } else {
       
       //If the user presses "-" and the previous operator is not "-", we keep it:
-      if (lastChar !== "-" && e.target.value == "-") {
+      if (lastChar !== "-" && e.target.value === "-") {
         this.setState({
           currentFormula: this.state.currentFormula + e.target.value,
         })
         
       //If the user presses "*", "+" or "/" and the previous operator is "-" (ex.: 5*-+5 = 10), we need to replace all operators before with the last one:
-       } else if (e.target.value !== "-" && lastChar == "-") {
+       } else if (e.target.value !== "-" && lastChar === "-") {
           this.setState({
               currentFormula: this.state.currentFormula.slice(0,-2) + e.target.value,
               currentValue: ""
@@ -120,7 +120,7 @@ class App extends React.Component {
   addDecimal(e) { 
     
     let lastChar = this.state.currentFormula[this.state.currentFormula.length-1];
-    let myRegex = /[+\-*\/]/;
+    let myRegex = /[+\-*]/;
     
     if (!this.state.currentValue.includes(".") && this.state.isEqualsClicked === false && !myRegex.test(lastChar)) {
       
