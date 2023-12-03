@@ -122,7 +122,7 @@ class App extends React.Component {
     let lastChar = this.state.currentFormula[this.state.currentFormula.length-1];
     let myRegex = /[+\-*\/]/;
     
-    if (!this.state.currentValue.includes(".") && this.state.isEqualsClicked == false && !myRegex.test(lastChar)) {
+    if (!this.state.currentValue.includes(".") && this.state.isEqualsClicked === false && !myRegex.test(lastChar)) {
       
       this.setState({
           output: this.state.output+".",
